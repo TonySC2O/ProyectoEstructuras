@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Tony\\Desktop\\ProyectoEstructuras\\Proyecto\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|C:\\Users\\Tony\\Desktop\\ProyectoEstructuras\\Proyecto\\Proyecto\\tiposUsuarios.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\tiposUsuarios.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|C:\\Users\\Tony\\Desktop\\ProyectoEstructuras\\Proyecto\\Proyecto\\Proyecto.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Proyecto.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Tony\\Downloads\\tareaMatrix\\Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "tiposUsuarios.h",
+              "DocumentMoniker": "C:\\Users\\Tony\\Desktop\\ProyectoEstructuras\\Proyecto\\Proyecto\\tiposUsuarios.h",
+              "RelativeDocumentMoniker": "Proyecto\\tiposUsuarios.h",
+              "ToolTip": "C:\\Users\\Tony\\Desktop\\ProyectoEstructuras\\Proyecto\\Proyecto\\tiposUsuarios.h",
+              "RelativeToolTip": "Proyecto\\tiposUsuarios.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-30T03:58:17.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Node.h",
+              "DocumentMoniker": "C:\\Users\\Tony\\Downloads\\tareaMatrix\\Node.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\tareaMatrix\\Node.h",
+              "ToolTip": "C:\\Users\\Tony\\Downloads\\tareaMatrix\\Node.h",
+              "RelativeToolTip": "..\\..\\..\\Downloads\\tareaMatrix\\Node.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-30T03:56:33.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Proyecto.cpp",
+              "DocumentMoniker": "C:\\Users\\Tony\\Desktop\\ProyectoEstructuras\\Proyecto\\Proyecto\\Proyecto.cpp",
+              "RelativeDocumentMoniker": "Proyecto\\Proyecto.cpp",
+              "ToolTip": "C:\\Users\\Tony\\Desktop\\ProyectoEstructuras\\Proyecto\\Proyecto\\Proyecto.cpp",
+              "RelativeToolTip": "Proyecto\\Proyecto.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-29T22:45:35.321Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
