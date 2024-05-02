@@ -123,5 +123,25 @@ public:
 		}
 		cout << "]" << endl;
 	}
+	int indexOf(E element) {
+		Node<E>* temp = head->next;
+		int i;
+		for (i = 0; temp != nullptr; i++) {
+			if (temp->element == element)
+				return i;
+			temp = temp->next;
+		}
+		return -1;
+	}
+	bool contains(E element) {
+		Node<E>* temp = head->next;
+		while (temp != nullptr) {
+			if (temp->element == element)
+				return true;
+			temp = temp->next;
+		}
+		return false;
+	}
 };
+
 

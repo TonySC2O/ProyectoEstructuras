@@ -3,7 +3,6 @@
 #define DEFAULT_MAX_SIZE 1024
 
 #include <stdexcept>
-#include <string>
 #include <iostream>
 #include "List.h"
 
@@ -18,7 +17,22 @@ protected: // se ponen protected cuando una subclase debe accederlos
 	int max;
 	int size;
 	int pos;
+private:
 
+	void expand() {
+		int newMax = max * 2;
+
+		E* newElements = new E[newMax];
+
+		for (int i = 0; i < size; i++) {
+			newElements[i] = elements[i];
+		}
+
+		delete[] elements;
+
+		elements = newElements;
+		max = newMax;
+	}
 public:
 	ArrayList(int max = DEFAULT_MAX_SIZE) {
 		elements = new E[max];
@@ -29,18 +43,28 @@ public:
 		delete[] elements;
 	}
 	void insert(E element) {
-		if (size == max)
-			throw runtime_error("List is full.");
-		for (int i = size; i > pos; i--) 
-			elements[i] = elements[i - 1];
-		elements[pos] = element;
-		size++;
+		if (size >= max) {
+			cout << "List is full, List will now expand to add element." << endl;
+			expand();
+			insert(element);
+		}
+		else {
+			for (int i = size; i > pos; i--)
+				elements[i] = elements[i - 1];
+			elements[pos] = element;
+			size++;
+		}
 	}
 	void append(E element) {
-		if (size == max)
-			throw runtime_error("List is full.");
-		elements[size] = element;
-		size++;
+		if (size >= max) {
+			cout << "List is full, List will now expand to add element." << endl;
+			expand();
+			append(element);
+		}
+		else {
+			elements[size] = element;
+			size++;
+		}
 	}
 	void set(E element) {
 		if (pos == size)
@@ -104,6 +128,15 @@ public:
 		for (int i = 0; i < size; i++)
 			cout << elements[i] << " ";
 		cout << "]" << endl;
+	}
+	int indexOf(E element) {
+		for (int i = 0; i < size; i++)
+			if (elements[i] == element)
+				return i;
+		return -1;
+	}
+	bool contains(E element) {
+		return indexOf(element) != -1;
 	}
 };
 
