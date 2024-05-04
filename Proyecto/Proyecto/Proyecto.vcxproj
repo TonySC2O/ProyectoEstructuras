@@ -130,6 +130,16 @@
     <ClCompile Include="Proyecto.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Apoyo\ArrayList.h" />
+    <ClInclude Include="Apoyo\LinkedList.h" />
+    <ClInclude Include="Apoyo\LinkedPriorityQueue.h" />
+    <ClInclude Include="Apoyo\LinkedQueue.h" />
+    <ClInclude Include="Apoyo\List.h" />
+    <ClInclude Include="Apoyo\matrix.h" />
+    <ClInclude Include="Apoyo\Node.h" />
+    <ClInclude Include="Apoyo\PriorityQueue.h" />
+    <ClInclude Include="Apoyo\Queue.h" />
+    <ClInclude Include="Apoyo\SortedArrayList.h" />
     <ClInclude Include="tiposUsuarios.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
