@@ -2,11 +2,11 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "./Apoyo/SortedArrayList.h"
 #include "./Apoyo/LinkedPriorityQueue.h"
 #include "./Apoyo/ArrayList.h"
 #include "./Apoyo/LinkedList.h"
-
 using namespace std;
 
 // Estructura de tipos de usuario, posee el nombre del tipo, una descripción y su prioridad.
@@ -54,18 +54,15 @@ struct Tiquete {
 	Tiquete() : codigoArea(""), tipoUsuarioAsociado(""), tipoServicioAsociado(""), numGlobal(0), horaSolicitud(0), prioridadFinal(0) {}
 	Tiquete(string codi, string usua, string serv, int nume, int hora, int prio) : codigoArea(codi), tipoUsuarioAsociado(usua), tipoServicioAsociado(serv), numGlobal(nume), horaSolicitud(hora), prioridadFinal(prio) {}
 
-	// Dicta que se muestra al realizar un console out del objeto.
 	friend std::ostream& operator<<(std::ostream& os, const Tiquete& tiquete) {
 		os << tiquete.codigoArea << tiquete.numGlobal << ", hora de solicitud: " << tiquete.horaSolicitud << ", prioridad: " << tiquete.prioridadFinal;
 		return os;
 	}
 
-	// Sobrecarga del operador >= para evaluar prioridad.
 	bool operator>=(const Tiquete& otro) const {
 		return prioridadFinal >= otro.prioridadFinal;
 	}
 
-	// Sobrecarga del operador >= para evaluar prioridad.
 	bool operator==(const Tiquete& otro) const {
 		return (codigoArea + to_string(numGlobal)) == (otro.codigoArea + to_string(otro.numGlobal));
 	}
@@ -169,13 +166,12 @@ void verColas() {
 }
 
 // Este codigo recorre cada area para ver cual coincide con el codigo del area del tiquete
-void colocarTiquete(Tiquete ticket) {
+void colocarTiquete(string codigoArea, string tipoUsuario, string tipoServicio, int numGlobal, int horaSolicitud, int prioridadFinal) {
+	Tiquete nuevoTiquete(codigoArea, tipoUsuario, tipoServicio, numGlobal, horaSolicitud, prioridadFinal);
 	areas->goToStart();
-	for (int i = 0; i < areas->getSize(); i++)
-	{
-		if (areas->getElement().codigo == ticket.codigoArea)
-		{
-			areas->getElement().colaTiquetes->insert(ticket, ticket.prioridadFinal);
+	for (int i = 0; i < areas->getSize(); i++) {
+		if (areas->getElement().codigo == codigoArea) {
+			areas->getElement().colaTiquetes->insert(nuevoTiquete, nuevoTiquete.prioridadFinal);
 			break;
 		}
 		areas->next();
@@ -283,7 +279,75 @@ void limpiarColasYEstadisticas() {
 		areas->getElement().colaTiquetes->clear();
 	}
 }
+void agregarTipoUsuario() {
+	string nombre, descripcion;
+	int prioridad;
+	cout << "Ingrese el nombre del tipo de usuario: ";
+	cin >> nombre;
+	cout << "Ingrese la descripción del tipo de usuario: ";
+	cin >> descripcion;
+	cout << "Ingrese la prioridad del tipo de usuario: ";
+	cin >> prioridad;
+	TipoUsuario nuevoTipo(nombre, descripcion, prioridad);
+	tiposUsuario->append(nuevoTipo);
+}
 
+void agregarServicio() {
+	string nombre, descripcion, codigoArea;
+	int prioridad;
+	cout << "Ingrese el nombre del servicio: ";
+	cin >> nombre;
+	cout << "Ingrese la descripción del servicio: ";
+	cin >> descripcion;
+	cout << "Ingrese la prioridad del servicio: ";
+	cin >> prioridad;
+	cout << "Ingrese el código del área asociada al servicio: ";
+	cin >> codigoArea;
+	Servicio nuevoServicio(nombre, descripcion, prioridad, codigoArea);
+	servicios->append(nuevoServicio);
+}
+void agregarArea() {
+	string descripcion, codigo;
+	int cantidadVentanillas;
+	cout << "Ingrese la descripción del área: ";
+	cin >> descripcion;
+	cout << "Ingrese el código del área: ";
+	cin >> codigo;
+	cout << "Ingrese la cantidad de ventanillas: ";
+	cin >> cantidadVentanillas;
+	Area nuevaArea(descripcion, codigo, cantidadVentanillas);
+	areas->append(nuevaArea);
+}
+void eliminarServicio() {
+	cout << "Lista de servicios disponibles:" << endl;
+	for (int i = 0; i < servicios->getSize(); i++) {
+		cout << i + 1 << ". " << servicios->getElement() << endl;
+		servicios->next();
+	}
+	int opcion;
+	cout << "Seleccione el número del servicio que desea eliminar: ";
+	cin >> opcion;
+	servicios->goToPos(opcion - 1);
+	servicios->remove();
+	servicios->goToStart(); // Regresar al inicio de la lista
+}
+
+void reordenarServicios() {
+	cout << "Lista de servicios disponibles:" << endl;
+	for (int i = 0; i < servicios->getSize(); i++) {
+		cout << i + 1 << ". " << servicios->getElement() << endl;
+		servicios->next();
+	}
+	int numServicio, nuevaPosicion;
+	cout << "Ingrese el número del servicio que desea reordenar: ";
+	cin >> numServicio;
+	cout << "Ingrese la nueva posición del servicio: ";
+	cin >> nuevaPosicion;
+	servicios->goToPos(numServicio - 1);
+	Servicio servicio = servicios->remove();
+	servicios->goToPos(nuevaPosicion - 1);
+	servicios->insert(servicio);
+}
 void mostrarMenuPrincipal() {
 	cout << "----- Menú Principal -----" << endl;
 	cout << "1. Estado de las colas" << endl;
@@ -297,107 +361,200 @@ void mostrarMenuPrincipal() {
 
 void mostrarMenuTiquetes() {
 	cout << "----- Menú Tiquetes -----" << endl;
-	cout << "1. Seleccionar tipo de cliente y servicio" << endl;
-	cout << "2. Regresar" << endl;
+	cout << "1. Colocar Tiquete" << endl;
+	cout << "2. Eliminar Tiquetes de la Cola" << endl;
+	cout << "3. Regresar" << endl;
 	cout << "Seleccione una opción: ";
 }
 
 void mostrarMenuAdministracion() {
 	cout << "----- Menú Administración -----" << endl;
-	cout << "1. Tipos de usuario" << endl;
-	cout << "2. Áreas" << endl;
-	cout << "3. Servicios disponibles" << endl;
-	cout << "4. Limpiar colas y estadísticas" << endl;
+	cout << "1. Submenú Tipos de Usuario" << endl;
+	cout << "2. Submenú Áreas" << endl;
+	cout << "3. Submenú Servicios Disponibles" << endl;
+	cout << "4. Limpiar Colas y Estadísticas" << endl;
 	cout << "5. Regresar" << endl;
 	cout << "Seleccione una opción: ";
 }
-
-void mostrarMenuTiposUsuario() {
-	cout << "----- Menú Tipos de Usuario -----" << endl;
+void mostrarSubmenuTiposUsuario() {
+	cout << "----- Submenú Tipos de Usuario -----" << endl;
 	cout << "1. Agregar" << endl;
 	cout << "2. Eliminar" << endl;
 	cout << "3. Regresar" << endl;
 	cout << "Seleccione una opción: ";
 }
 
-// Funciones para manejar la lógica de cada opción del menú...
+void mostrarSubmenuAreas() {
+	cout << "----- Submenú Áreas -----" << endl;
+	cout << "1. Agregar" << endl;
+	cout << "2. Modificar Cantidad de Ventanillas" << endl;
+	cout << "3. Eliminar" << endl;
+	cout << "4. Regresar" << endl;
+	cout << "Seleccione una opción: ";
+}
 
+void mostrarSubmenuServiciosDisponibles() {
+	cout << "----- Submenú Servicios Disponibles -----" << endl;
+	cout << "1. Agregar" << endl;
+	cout << "2. Eliminar" << endl;
+	cout << "3. Reordenar" << endl;
+	cout << "4. Regresar" << endl;
+	cout << "Seleccione una opción: ";
+}
 int main() {
-	int opcionPrincipal;
-
+	int opcionPrincipal, numGlobal, prioridadFinal, horaSolicitud, opcionTiquetes, opcionAdmin, opcionEliminar, posicion, opcionModificarVentanillas, codigoAreaModificar, nuevaCantidad, codigoAreaEliminar, codigoUsuarioEliminar;
+	string tipoUsuario, tipoServicio, codigoArea;
 	do {
-		system("cls"); // Limpia la pantalla (solo funciona en sistemas Windows, para otros sistemas puedes usar "clear")
 		mostrarMenuPrincipal();
 		cin >> opcionPrincipal;
 
 		switch (opcionPrincipal) {
 		case 1:
-			// Lógica para mostrar el estado de las colas
-			// Esperar a que el usuario presione alguna tecla para regresar al menú principal
-			system("pause");
+			verColas(); // Llamar a la función para mostrar el estado de las colas
 			break;
 		case 2:
-			int opcionTiquetes;
+			opcionTiquetes = 0; // Reiniciar opcionTiquetes
 			do {
-				system("cls");
 				mostrarMenuTiquetes();
 				cin >> opcionTiquetes;
 
 				switch (opcionTiquetes) {
 				case 1:
-					// Lógica para seleccionar tipo de cliente y servicio
+					// Solicitar información para colocar un tiquete...
+					cout << "Ingrese código de área: ";
+					cin >> codigoArea;
+					cout << "Ingrese tipo de usuario: ";
+					cin >> tipoUsuario;
+					cout << "Ingrese tipo de servicio: ";
+					cin >> tipoServicio;
+					cout << "Ingrese número global: ";
+					cin >> numGlobal;
+					cout << "Ingrese hora de solicitud: ";
+					cin >> horaSolicitud;
+					cout << "Ingrese prioridad final: ";
+					cin >> prioridadFinal;
+					colocarTiquete(codigoArea, tipoUsuario, tipoServicio, numGlobal, horaSolicitud, prioridadFinal);
 					break;
 				case 2:
-					// Regresar al menú principal de tiquetes
+					// Solicitar información para eliminar tiquetes de las colas...
+					cout << "¿Qué desea eliminar?" << endl;
+					cout << "1. Tipo de usuario" << endl;
+					cout << "2. Tipo de servicio" << endl;
+					cout << "Seleccione una opción: ";
+					cin >> opcionEliminar;
+					cout << "Ingrese la posición del elemento: ";
+					cin >> posicion;
+					eliminarTicketsCola(opcionEliminar, posicion);
+					break;
+				case 3:
+					// Regresar al menú principal
 					break;
 				default:
 					cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
 					break;
 				}
-			} while (opcionTiquetes != 2);
+			} while (opcionTiquetes != 3);
 			break;
 		case 3:
-			// Lógica para atender
+			// Lógica para atender tiquetes...
 			break;
 		case 4:
-			int opcionAdmin;
+			opcionAdmin = 0; // Reiniciar opcionAdmin
 			do {
-				system("cls");
 				mostrarMenuAdministracion();
 				cin >> opcionAdmin;
 
 				switch (opcionAdmin) {
 				case 1:
-					int opcionTiposUsuario;
+					// Abre el submenú de tipos de usuario
+					int opcionSubmenuTiposUsuario;
 					do {
-						system("cls");
-						mostrarMenuTiposUsuario();
-						cin >> opcionTiposUsuario;
+						mostrarSubmenuTiposUsuario();
+						cin >> opcionSubmenuTiposUsuario;
 
-						switch (opcionTiposUsuario) {
+						switch (opcionSubmenuTiposUsuario) {
 						case 1:
-							// Lógica para agregar tipo de usuario
+							agregarTipoUsuario();
 							break;
 						case 2:
-							// Lógica para eliminar tipo de usuario
+							// Solicitar información para eliminar un tipo de usuario...
+							cout << "Ingrese el nombre del tipo de usuario a eliminar: ";
+							cin >> codigoUsuarioEliminar;
+							eliminarTipoUsuario(codigoUsuarioEliminar);
 							break;
 						case 3:
-							// Regresar al menú principal de administración
+							// Regresar al menú anterior
 							break;
 						default:
 							cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
 							break;
 						}
-					} while (opcionTiposUsuario != 3);
+					} while (opcionSubmenuTiposUsuario != 3);
 					break;
 				case 2:
-					// Lógica para áreas
+					// Abre el submenú de áreas
+					int opcionSubmenuAreas;
+					do {
+						mostrarSubmenuAreas();
+						cin >> opcionSubmenuAreas;
+
+						switch (opcionSubmenuAreas) {
+						case 1:
+							agregarArea();
+							break;
+						case 2:
+							// Solicitar información para modificar la cantidad de ventanillas...
+							cout << "Ingrese el código del área a modificar: ";
+							cin >> codigoAreaModificar;
+							cout << "Ingrese la nueva cantidad de ventanillas: ";
+							cin >> nuevaCantidad;
+							modificarCantidadVentanillas(codigoAreaModificar, nuevaCantidad);
+							break;
+						case 3:
+							// Solicitar información para eliminar un área...
+							cout << "Ingrese el código del área a eliminar: ";
+							cin >> codigoAreaEliminar;
+							eliminarArea(codigoAreaEliminar);
+							break;
+						case 4:
+							// Regresar al menú anterior
+							break;
+						default:
+							cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
+							break;
+						}
+					} while (opcionSubmenuAreas != 4);
 					break;
 				case 3:
-					// Lógica para servicios disponibles
+					// Abre el submenú de servicios disponibles
+					int opcionSubmenuServicios;
+					do {
+						mostrarSubmenuServiciosDisponibles();
+						cin >> opcionSubmenuServicios;
+
+						switch (opcionSubmenuServicios) {
+						case 1:
+							agregarServicio();
+							break;
+						case 2:
+							// Solicitar información para eliminar un servicio...
+							eliminarServicio();
+							break;
+						case 3:
+							// Lógica para reordenar servicios...
+							reordenarServicios();
+							break;
+						case 4:
+							// Regresar al menú anterior
+							break;
+						default:
+							cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
+							break;
+						}
+					} while (opcionSubmenuServicios != 4);
 					break;
 				case 4:
-					// Lógica para limpiar colas y estadísticas
+					limpiarColasYEstadisticas(); // Llamar a la función para limpiar colas y estadísticas
 					break;
 				case 5:
 					// Regresar al menú principal
@@ -409,9 +566,7 @@ int main() {
 			} while (opcionAdmin != 5);
 			break;
 		case 5:
-			// Lógica para mostrar estadísticas del sistema
-			// Esperar a que el usuario presione alguna tecla para regresar al menú principal
-			system("pause");
+			// Lógica para mostrar estadísticas del sistema...
 			break;
 		case 6:
 			cout << "Saliendo del programa..." << endl;
