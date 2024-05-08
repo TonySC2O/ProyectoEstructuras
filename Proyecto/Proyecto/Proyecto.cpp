@@ -558,7 +558,7 @@ void submenuAreas() {
 			break;
 		case 2:
 			// Solicitar información para modificar la cantidad de ventanillas...
-			cout << "Ingrese el código del área a modificar: ";
+			cout << "Ingrese el indice del área que se encuentra a modificar: ";
 			cin >> codigoAreaModificar;
 			cout << "Ingrese la nueva cantidad de ventanillas: ";
 			cin >> nuevaCantidad;
@@ -566,7 +566,7 @@ void submenuAreas() {
 			break;
 		case 3:
 			// Solicitar información para eliminar un área...
-			cout << "Ingrese el código del área a eliminar: ";
+			cout << "Ingrese el indice del área que se encuentra a eliminar: ";
 			cin >> codigoAreaEliminar;
 			eliminarArea(codigoAreaEliminar);
 			break;
