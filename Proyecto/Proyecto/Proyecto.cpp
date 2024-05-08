@@ -530,7 +530,7 @@ void submenuTiposUsuario() {
 			break;
 		case 2:
 			// Solicitar información para eliminar un tipo de usuario...
-			cout << "Ingrese el nombre del tipo de usuario a eliminar: ";
+			cout << "Ingrese el codigo del tipo de usuario a eliminar: ";
 			cin >> codigoUsuarioEliminar;
 			eliminarTipoUsuario(codigoUsuarioEliminar);
 			break;
