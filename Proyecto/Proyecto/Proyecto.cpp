@@ -403,181 +403,208 @@ void mostrarSubmenuServiciosDisponibles() {
 	cout << "Seleccione una opci�n: ";
 }
 int main() {
-	int opcionPrincipal, numGlobal, prioridadFinal, horaSolicitud, opcionTiquetes, opcionAdmin, opcionEliminar, posicion, opcionModificarVentanillas, codigoAreaModificar, nuevaCantidad, codigoAreaEliminar, codigoUsuarioEliminar;
-	string tipoUsuario, tipoServicio, codigoArea;
+	int opcionPrincipal;
 	do {
 		mostrarMenuPrincipal();
 		cin >> opcionPrincipal;
 
 		switch (opcionPrincipal) {
 		case 1:
-			verColas(); // Llamar a la funci�n para mostrar el estado de las colas
+			verColas(); // Llamar a la función para mostrar el estado de las colas
 			break;
 		case 2:
-			opcionTiquetes = 0; // Reiniciar opcionTiquetes
-			do {
-				mostrarMenuTiquetes();
-				cin >> opcionTiquetes;
-
-				switch (opcionTiquetes) {
-				case 1:
-					// Solicitar informaci�n para colocar un tiquete...
-					cout << "Ingrese c�digo de �rea: ";
-					cin >> codigoArea;
-					cout << "Ingrese tipo de usuario: ";
-					cin >> tipoUsuario;
-					cout << "Ingrese tipo de servicio: ";
-					cin >> tipoServicio;
-					cout << "Ingrese n�mero global: ";
-					cin >> numGlobal;
-					cout << "Ingrese hora de solicitud: ";
-					cin >> horaSolicitud;
-					cout << "Ingrese prioridad final: ";
-					cin >> prioridadFinal;
-					colocarTiquete(codigoArea, tipoUsuario, tipoServicio, numGlobal, horaSolicitud, prioridadFinal);
-					break;
-				case 2:
-					// Solicitar informaci�n para eliminar tiquetes de las colas...
-					cout << "�Qu� desea eliminar?" << endl;
-					cout << "1. Tipo de usuario" << endl;
-					cout << "2. Tipo de servicio" << endl;
-					cout << "Seleccione una opci�n: ";
-					cin >> opcionEliminar;
-					cout << "Ingrese la posici�n del elemento: ";
-					cin >> posicion;
-					eliminarTicketsCola(opcionEliminar, posicion);
-					break;
-				case 3:
-					// Regresar al men� principal
-					break;
-				default:
-					cout << "Opci�n inv�lida. Por favor, seleccione una opci�n v�lida." << endl;
-					break;
-				}
-			} while (opcionTiquetes != 3);
+			menuTiquetes();
 			break;
 		case 3:
-			// L�gica para atender tiquetes...
+			// Lógica para atender tiquetes...
 			break;
 		case 4:
-			opcionAdmin = 0; // Reiniciar opcionAdmin
-			do {
-				mostrarMenuAdministracion();
-				cin >> opcionAdmin;
-
-				switch (opcionAdmin) {
-				case 1:
-					// Abre el submen� de tipos de usuario
-					int opcionSubmenuTiposUsuario;
-					do {
-						mostrarSubmenuTiposUsuario();
-						cin >> opcionSubmenuTiposUsuario;
-
-						switch (opcionSubmenuTiposUsuario) {
-						case 1:
-							agregarTipoUsuario();
-							break;
-						case 2:
-							// Solicitar informaci�n para eliminar un tipo de usuario...
-							cout << "Ingrese el nombre del tipo de usuario a eliminar: ";
-							cin >> codigoUsuarioEliminar;
-							eliminarTipoUsuario(codigoUsuarioEliminar);
-							break;
-						case 3:
-							// Regresar al men� anterior
-							break;
-						default:
-							cout << "Opci�n inv�lida. Por favor, seleccione una opci�n v�lida." << endl;
-							break;
-						}
-					} while (opcionSubmenuTiposUsuario != 3);
-					break;
-				case 2:
-					// Abre el submen� de �reas
-					int opcionSubmenuAreas;
-					do {
-						mostrarSubmenuAreas();
-						cin >> opcionSubmenuAreas;
-
-						switch (opcionSubmenuAreas) {
-						case 1:
-							agregarArea();
-							break;
-						case 2:
-							// Solicitar informaci�n para modificar la cantidad de ventanillas...
-							cout << "Ingrese el c�digo del �rea a modificar: ";
-							cin >> codigoAreaModificar;
-							cout << "Ingrese la nueva cantidad de ventanillas: ";
-							cin >> nuevaCantidad;
-							modificarCantidadVentanillas(codigoAreaModificar, nuevaCantidad);
-							break;
-						case 3:
-							// Solicitar informaci�n para eliminar un �rea...
-							cout << "Ingrese el c�digo del �rea a eliminar: ";
-							cin >> codigoAreaEliminar;
-							eliminarArea(codigoAreaEliminar);
-							break;
-						case 4:
-							// Regresar al men� anterior
-							break;
-						default:
-							cout << "Opci�n inv�lida. Por favor, seleccione una opci�n v�lida." << endl;
-							break;
-						}
-					} while (opcionSubmenuAreas != 4);
-					break;
-				case 3:
-					// Abre el submen� de servicios disponibles
-					int opcionSubmenuServicios;
-					do {
-						mostrarSubmenuServiciosDisponibles();
-						cin >> opcionSubmenuServicios;
-
-						switch (opcionSubmenuServicios) {
-						case 1:
-							agregarServicio();
-							break;
-						case 2:
-							// Solicitar informaci�n para eliminar un servicio...
-							eliminarServicio();
-							break;
-						case 3:
-							// L�gica para reordenar servicios...
-							reordenarServicios();
-							break;
-						case 4:
-							// Regresar al men� anterior
-							break;
-						default:
-							cout << "Opci�n inv�lida. Por favor, seleccione una opci�n v�lida." << endl;
-							break;
-						}
-					} while (opcionSubmenuServicios != 4);
-					break;
-				case 4:
-					limpiarColasYEstadisticas(); // Llamar a la funci�n para limpiar colas y estad�sticas
-					break;
-				case 5:
-					// Regresar al men� principal
-					break;
-				default:
-					cout << "Opci�n inv�lida. Por favor, seleccione una opci�n v�lida." << endl;
-					break;
-				}
-			} while (opcionAdmin != 5);
+			menuAdministracion();
 			break;
 		case 5:
-			// L�gica para mostrar estad�sticas del sistema...
+			// Lógica para mostrar estadísticas del sistema...
 			break;
 		case 6:
 			cout << "Saliendo del programa..." << endl;
 			break;
 		default:
-			cout << "Opci�n inv�lida. Por favor, seleccione una opci�n v�lida." << endl;
+			cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
 			break;
 		}
 	} while (opcionPrincipal != 6);
-
-	return 0;
 }
 
+void menuTiquetes() {
+	int opcionTiquetes = 0;
+	string codigoArea, tipoUsuario, tipoServicio;
+	int numGlobal = 0, prioridadFinal = 0, horaSolicitud = 0, opcionEliminar = 0, posicion = 0;
+
+	do {
+		mostrarMenuTiquetes();
+		cin >> opcionTiquetes;
+
+		switch (opcionTiquetes) {
+		case 1:
+			// Solicitar información para colocar un tiquete...
+			cout << "Ingrese código de área: ";
+			cin >> codigoArea;
+			cout << "Ingrese tipo de usuario: ";
+			cin >> tipoUsuario;
+			cout << "Ingrese tipo de servicio: ";
+			cin >> tipoServicio;
+			cout << "Ingrese número global: ";
+			cin >> numGlobal;
+			cout << "Ingrese hora de solicitud: ";
+			cin >> horaSolicitud;
+			cout << "Ingrese prioridad final: ";
+			cin >> prioridadFinal;
+			colocarTiquete(codigoArea, tipoUsuario, tipoServicio, numGlobal, horaSolicitud, prioridadFinal);
+			break;
+		case 2:
+			// Solicitar información para eliminar tiquetes de las colas...
+			cout << "¿Qué desea eliminar?" << endl;
+			cout << "1. Tipo de usuario" << endl;
+			cout << "2. Tipo de servicio" << endl;
+			cout << "Seleccione una opción: ";
+			cin >> opcionEliminar;
+			cout << "Ingrese la posición del elemento: ";
+			cin >> posicion;
+			eliminarTicketsCola(opcionEliminar, posicion);
+			break;
+		case 3:
+			// Regresar al menú principal
+			break;
+		default:
+			cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
+			break;
+		}
+	} while (opcionTiquetes != 3);
+}
+
+void menuAdministracion() {
+	int opcionAdmin;
+	do {
+		mostrarMenuAdministracion();
+		cin >> opcionAdmin;
+
+		switch (opcionAdmin) {
+		case 1:
+			// Abre el submenú de tipos de usuario
+			submenuTiposUsuario();
+			break;
+		case 2:
+			// Abre el submenú de áreas
+			submenuAreas();
+			break;
+		case 3:
+			// Abre el submenú de servicios disponibles
+			submenuServiciosDisponibles();
+			break;
+		case 4:
+			limpiarColasYEstadisticas(); // Llamar a la función para limpiar colas y estadísticas
+			break;
+		case 5:
+			// Regresar al menú principal
+			break;
+		default:
+			cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
+			break;
+		}
+	} while (opcionAdmin != 5);
+}
+
+// Los métodos para los submenús mantienen la misma estructura y opciones que especificaste.
+// Ahora implementaré los submenús restantes.
+
+void submenuTiposUsuario() {
+	int opcionSubmenuTiposUsuario = 0;
+	int codigoUsuarioEliminar = 0;
+
+	do {
+		mostrarSubmenuTiposUsuario();
+		cin >> opcionSubmenuTiposUsuario;
+
+		switch (opcionSubmenuTiposUsuario) {
+		case 1:
+			agregarTipoUsuario();
+			break;
+		case 2:
+			// Solicitar información para eliminar un tipo de usuario...
+			cout << "Ingrese el nombre del tipo de usuario a eliminar: ";
+			cin >> codigoUsuarioEliminar;
+			eliminarTipoUsuario(codigoUsuarioEliminar);
+			break;
+		case 3:
+			// Regresar al menú anterior
+			break;
+		default:
+			cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
+			break;
+		}
+	} while (opcionSubmenuTiposUsuario != 3);
+}
+
+void submenuAreas() {
+	int opcionSubmenuAreas = 0;
+	int nuevaCantidad = 0, codigoAreaModificar = 0, codigoAreaEliminar = 0;
+
+	do {
+		mostrarSubmenuAreas();
+		cin >> opcionSubmenuAreas;
+
+		switch (opcionSubmenuAreas) {
+		case 1:
+			agregarArea();
+			break;
+		case 2:
+			// Solicitar información para modificar la cantidad de ventanillas...
+			cout << "Ingrese el código del área a modificar: ";
+			cin >> codigoAreaModificar;
+			cout << "Ingrese la nueva cantidad de ventanillas: ";
+			cin >> nuevaCantidad;
+			modificarCantidadVentanillas(codigoAreaModificar, nuevaCantidad);
+			break;
+		case 3:
+			// Solicitar información para eliminar un área...
+			cout << "Ingrese el código del área a eliminar: ";
+			cin >> codigoAreaEliminar;
+			eliminarArea(codigoAreaEliminar);
+			break;
+		case 4:
+			// Regresar al menú anterior
+			break;
+		default:
+			cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
+			break;
+		}
+	} while (opcionSubmenuAreas != 4);
+}
+
+void submenuServiciosDisponibles() {
+	int opcionSubmenuServicios = 0;
+
+	do {
+		mostrarSubmenuServiciosDisponibles();
+		cin >> opcionSubmenuServicios;
+
+		switch (opcionSubmenuServicios) {
+		case 1:
+			agregarServicio();
+			break;
+		case 2:
+			// Solicitar información para eliminar un servicio...
+			eliminarServicio();
+			break;
+		case 3:
+			// Lógica para reordenar servicios...
+			reordenarServicios();
+			break;
+		case 4:
+			// Regresar al menú anterior
+			break;
+		default:
+			cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
+			break;
+		}
+	} while (opcionSubmenuServicios != 4);
+}
