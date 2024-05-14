@@ -275,3 +275,7 @@ void menuAdministracion() {
 		}
 	} while (opcionAdmin != 5);
 }
+
+void atender() {
+	atenderTiquete();
+}
