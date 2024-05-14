@@ -68,6 +68,7 @@ struct Tiquete {
 struct Ventanilla {
 	string nombre = "";
 	string tiqueteAtendido = "";
+	int cantidadPersonas = 0;
 
 	Ventanilla() : nombre(""), tiqueteAtendido("None") {}
 	Ventanilla(string nomb) : nombre(nomb), tiqueteAtendido("None") {}
@@ -402,4 +403,35 @@ void reordenarServicios() {
 	Servicio servicio = servicios->remove();
 	servicios->goToPos(nuevaPosicion - 1);
 	servicios->insert(servicio);
+}
+
+void atenderTiquete() {
+	string codigo;
+	Area area;
+	int indiceVentanilla;
+
+	int i = 0;
+	cout << "Ingrese el codigo del area: ";
+	cin >> codigo;
+
+	areas->goToStart();
+	for (i = 0; i < areas->getSize(); i++) {
+		if (areas->getElement().codigo == codigo) {
+			area = areas->getElement();
+		}
+		areas->next();
+
+	}
+
+	if (i < areas->getSize()) {
+		cout << "El area tiene " << area.ventanillas->getSize() << "ventanillas, ingrese la ventanilla a atender. " << endl;
+		cout << "El indice inicia en 1" << endl;
+		cin >> indiceVentanilla;
+		area.ventanillas->goToPos(indiceVentanilla - 1);
+		Ventanilla ventana = area.ventanillas->getElement();
+
+
+
+	}
+		
 }
