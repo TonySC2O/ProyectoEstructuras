@@ -33,13 +33,13 @@ int main() {
 				menuTiquetes();
 				break;
 			case 3:
-				// Lógica para atender tiquetes...
+				atenderTiquete();
 				break;
 			case 4:
 				menuAdministracion();
 				break;
 			case 5:
-				// Lógica para mostrar estadísticas del sistema...
+				obtenerEstadisticas();// Lógica para mostrar estadísticas del sistema...
 				break;
 			case 6:
 				cout << "Saliendo del programa..." << endl;

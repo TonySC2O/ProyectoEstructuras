@@ -445,5 +445,17 @@ void atenderTiquete() {
 	else {
 		cout << "El codigo ingresado del area no es valido. " << endl;
 	}
-		
+	
+}
+void obtenerEstadisticas() {
+	areas->goToStart();
+	for (int i = 0; i < areas->getSize(); i++) {
+		cout << "Area " << areas->getElement().codigo << ":" << endl;
+		areas->getElement().ventanillas->goToStart();
+		for (int j = 0; j < areas->getElement().ventanillas->getSize(); j++) {
+			cout << "Ventanilla " << areas->getElement().ventanillas->getElement().nombre << ": " << areas->getElement().ventanillas->getElement().cantidadPersonas << " personas atendidas." << endl;
+			areas->getElement().ventanillas->next();
+		}
+		areas->next();
+	}
 }
