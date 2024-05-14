@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\StevenM2Wind\\Documents\\GitHub\\ProyectoEstructuras\\Proyecto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|C:\\USERS\\STEVENM2WIND\\DOCUMENTS\\GITHUB\\PROYECTOESTRUCTURAS\\PROYECTO\\PROYECTO\\RECURSOS\\ELEMENTOS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|solutionrelative:PROYECTO\\RECURSOS\\ELEMENTOS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|C:\\USERS\\STEVENM2WIND\\DOCUMENTS\\GITHUB\\PROYECTOESTRUCTURAS\\PROYECTO\\PROYECTO\\RECURSOS\\MENUS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|solutionrelative:PROYECTO\\RECURSOS\\MENUS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|C:\\USERS\\STEVENM2WIND\\DOCUMENTS\\GITHUB\\PROYECTOESTRUCTURAS\\PROYECTO\\PROYECTO\\RECURSOS\\ELEMENTOS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|solutionrelative:PROYECTO\\RECURSOS\\ELEMENTOS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D6081DD3-0BB0-4FD0-92CD-50B0A4A1BAA8}|Proyecto\\Proyecto.vcxproj|C:\\Users\\StevenM2Wind\\Documents\\GitHub\\ProyectoEstructuras\\Proyecto\\Proyecto\\Apoyo\\LinkedPriorityQueue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -64,7 +64,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "elementos.h",
               "DocumentMoniker": "C:\\Users\\StevenM2Wind\\Documents\\GitHub\\ProyectoEstructuras\\Proyecto\\Proyecto\\Recursos\\elementos.h",
               "RelativeDocumentMoniker": "Proyecto\\Recursos\\elementos.h",
@@ -77,13 +77,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "menus.h",
               "DocumentMoniker": "C:\\Users\\StevenM2Wind\\Documents\\GitHub\\ProyectoEstructuras\\Proyecto\\Proyecto\\Recursos\\menus.h",
               "RelativeDocumentMoniker": "Proyecto\\Recursos\\menus.h",
               "ToolTip": "C:\\Users\\StevenM2Wind\\Documents\\GitHub\\ProyectoEstructuras\\Proyecto\\Proyecto\\Recursos\\menus.h",
               "RelativeToolTip": "Proyecto\\Recursos\\menus.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcBAAAQAAAA",
+              "ViewState": "AQIAAP8AAAAAAAAAAAAAAA0BAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-05-14T06:11:45.554Z",
               "EditorCaption": ""

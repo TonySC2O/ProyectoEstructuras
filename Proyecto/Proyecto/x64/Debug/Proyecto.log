@@ -1,6 +1,2 @@
 ﻿  Proyecto.cpp
-C:\Users\alema\Documents\U Ale\Segundo Semestre\ED\Código C++\ProyectoED\ProyectoEstructuras\Proyecto\Proyecto\Proyecto.cpp(416,4): error C3861: 'menuTiquetes': identifier not found
-C:\Users\alema\Documents\U Ale\Segundo Semestre\ED\Código C++\ProyectoED\ProyectoEstructuras\Proyecto\Proyecto\Proyecto.cpp(422,4): error C3861: 'menuAdministracion': identifier not found
-C:\Users\alema\Documents\U Ale\Segundo Semestre\ED\Código C++\ProyectoED\ProyectoEstructuras\Proyecto\Proyecto\Proyecto.cpp(493,4): error C3861: 'submenuTiposUsuario': identifier not found
-C:\Users\alema\Documents\U Ale\Segundo Semestre\ED\Código C++\ProyectoED\ProyectoEstructuras\Proyecto\Proyecto\Proyecto.cpp(497,4): error C3861: 'submenuAreas': identifier not found
-C:\Users\alema\Documents\U Ale\Segundo Semestre\ED\Código C++\ProyectoED\ProyectoEstructuras\Proyecto\Proyecto\Proyecto.cpp(501,4): error C3861: 'submenuServiciosDisponibles': identifier not found
+  Proyecto.vcxproj -> C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\x64\Debug\Proyecto.exe
