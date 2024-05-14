@@ -69,6 +69,7 @@ struct Ventanilla {
 	string nombre = "";
 	string tiqueteAtendido = "";
 	int cantidadPersonas = 0;
+	Tiquete tiquete;
 
 	Ventanilla() : nombre(""), tiqueteAtendido("None") {}
 	Ventanilla(string nomb) : nombre(nomb), tiqueteAtendido("None") {}
@@ -427,11 +428,22 @@ void atenderTiquete() {
 		cout << "El area tiene " << area.ventanillas->getSize() << "ventanillas, ingrese la ventanilla a atender. " << endl;
 		cout << "El indice inicia en 1" << endl;
 		cin >> indiceVentanilla;
-		area.ventanillas->goToPos(indiceVentanilla - 1);
-		Ventanilla ventana = area.ventanillas->getElement();
+		if (indiceVentanilla - 1 > area.ventanillas->getSize()) {
+			cout << "La ventanilla ingresada no es valida. " << endl;
+		}
+		else {
+			area.ventanillas->goToPos(indiceVentanilla - 1);
+			Ventanilla ventana = area.ventanillas->getElement();
+			Tiquete tiquete = area.colaTiquetes->min();
+			area.colaTiquetes->removeMin();
+			ventana.tiquete = tiquete;
+			ventana.cantidadPersonas++;
+			cout << "Se asigno el tiquete al area pedido en la ventanilla ingresado. " << endl;
+		}
 
-
-
+	}
+	else {
+		cout << "El codigo ingresado del area no es valido. " << endl;
 	}
 		
 }
