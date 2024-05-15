@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Proyecto",
-    "\\Proyecto\\Proyecto"
+    "\\Proyecto\\Proyecto",
+    "\\Proyecto\\Proyecto\\Recursos"
   ],
-  "SelectedNode": "\\Proyecto\\Proyecto\\Proyecto.cpp",
+  "SelectedNode": "\\Proyecto\\Proyecto\\Recursos\\elementos.h",
   "PreviewInSolutionExplorer": false
 }

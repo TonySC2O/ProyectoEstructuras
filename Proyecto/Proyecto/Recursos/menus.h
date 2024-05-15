@@ -18,8 +18,7 @@ void mostrarMenuPrincipal() {
 void mostrarMenuTiquetes() {
 	cout << "----- Menu Tiquetes -----" << endl;
 	cout << "1. Colocar Tiquete" << endl;
-	cout << "2. Eliminar Tiquetes de la Cola" << endl;
-	cout << "3. Regresar" << endl;
+	cout << "2. Regresar" << endl;
 	cout << "Seleccione una opcion: ";
 }
 
@@ -61,7 +60,7 @@ void mostrarSubmenuServiciosDisponibles() {
 void menuTiquetes() {
 	int opcionTiquetes = 0;
 	string codigoArea = "", tipoUsuario = "", tipoServicio = "";
-	int prioridadFinal = 0, horaSolicitud = 0, opcionEliminar = 0, posicion = 0;
+	int prioridadFinal = 0, horaSolicitud = 0, opcionEliminar = 0, posicion = 0, opcionServicio = 0, opcionUsuario = 0;
 	time_t t;
 	struct tm* tiempo;
 	bool existe = false;
@@ -69,6 +68,7 @@ void menuTiquetes() {
 	do {
 		mostrarMenuTiquetes();
 		cin >> opcionTiquetes;
+		verificarCin();
 
 		switch (opcionTiquetes) {
 		case 1:
@@ -77,75 +77,48 @@ void menuTiquetes() {
 			{
 				throw runtime_error("No existen servicios.");
 			}
-			cout << "Digite un servicio a escojer: ";
-			cin.ignore();
-			getline(cin, tipoServicio);
 
-			servicios->goToStart();
-			for (int i = 0; i < servicios->getSize(); i++)
-			{
-				if (servicios->getElement().nombre == tipoServicio) {
-					codigoArea = servicios->getElement().codigoArea;
-					break;
-				}
-				servicios->next();
-			}
-			if (codigoArea == "")
-			{
-				throw runtime_error("Servicio no existe.");
-			}
-
-			cout << "Area asignada: Area " << codigoArea << endl;
-
-			cout << "Ingrese tipo de usuario: ";
-			getline(cin, tipoUsuario);
-
-			tiposUsuario->goToStart();
-			for (int i = 0; i < tiposUsuario->getSize(); i++)
-			{
-				if (tiposUsuario->getElement().nombre == tipoUsuario)
-				{
-					existe = true;
-					break;
-				}
-				tiposUsuario->next();
-			}
-			if (!existe)
-			{
-				throw runtime_error("Tipo de usuario no existe.");
-			}
+			listaTipoUsuarios();
+			cout << "Seleccione tipo de usuario: ";
+			cin >> opcionUsuario;
+			verificarCin();
+			tiposUsuario->goToPos(opcionUsuario - 1);
+			tipoUsuario = tiposUsuario->getElement().nombre;
+			
+			listaServicios();
+			cout << "Seleccione un servicio: ";
+			cin >> opcionServicio;
+			verificarCin();
+			servicios->goToPos(opcionServicio - 1);
+			tipoServicio = servicios->getElement().nombre;
+			codigoArea = servicios->getElement().codigoArea;
 
 			t = time(0);
 			tiempo = localtime(&t);
 			horaSolicitud = tiempoASegundos(tiempo->tm_hour, tiempo->tm_min, tiempo->tm_sec);
-			cout << "Hora de solicitud: " << segundosATiempo(horaSolicitud) << endl;
-
 
 			prioridadFinal = (tiposUsuario->getElement().prioridad * 10) + servicios->getElement().prioridad;
-			cout << "Prioridad final: " << prioridadFinal << endl;
 
 			colocarTiquete(codigoArea, tipoUsuario, tipoServicio, numGlobal, horaSolicitud, prioridadFinal);
+
+			cout << "Tiquete generado con exito" << endl;
+			cout << "Codigo de tiquete: " << (codigoArea + to_string(numGlobal)) << endl;
+			cout << "Hora de llegada: " << segundosATiempo(horaSolicitud) << endl;
+			cout << "Prioridad final: " << prioridadFinal << endl;
+			cout << "Tipo de cliente: " << tipoUsuario << endl;
+			cout << "Servicio Solicitado: " << tipoServicio << endl;
+			cout << "Area asignada: Area " << codigoArea << endl;
+
 			numGlobal++;
 			break;
 		case 2:
-			// Solicitar información para eliminar tiquetes de las colas...
-			cout << "¿Qué desea eliminar?" << endl;
-			cout << "1. Tipo de usuario" << endl;
-			cout << "2. Tipo de servicio" << endl;
-			cout << "Seleccione una opción: ";
-			cin >> opcionEliminar;
-			cout << "Ingrese la posición del elemento: ";
-			cin >> posicion;
-			eliminarTicketsCola(opcionEliminar, posicion);
-			break;
-		case 3:
 			// Regresar al menú principal
 			break;
 		default:
 			cout << "Opción inválida. Por favor, seleccione una opción válida." << endl;
 			break;
 		}
-	} while (opcionTiquetes != 3);
+	} while (opcionTiquetes != 2);
 }
 
 // Los métodos para los submenús mantienen la misma estructura y opciones que especificaste.
@@ -153,11 +126,12 @@ void menuTiquetes() {
 
 void submenuTiposUsuario() {
 	int opcionSubmenuTiposUsuario = 0;
-	int codigoUsuarioEliminar = 0;
+	string codigoUsuarioEliminar = "";
 
 	do {
 		mostrarSubmenuTiposUsuario();
 		cin >> opcionSubmenuTiposUsuario;
+		verificarCin();
 
 		switch (opcionSubmenuTiposUsuario) {
 		case 1:
@@ -165,9 +139,7 @@ void submenuTiposUsuario() {
 			break;
 		case 2:
 			// Solicitar información para eliminar un tipo de usuario...
-			cout << "Ingrese el codigo del tipo de usuario a eliminar: ";
-			cin >> codigoUsuarioEliminar;
-			eliminarTipoUsuario(codigoUsuarioEliminar);
+			eliminarTipoUsuario();
 			break;
 		case 3:
 			// Regresar al menú anterior
@@ -181,11 +153,13 @@ void submenuTiposUsuario() {
 
 void submenuAreas() {
 	int opcionSubmenuAreas = 0;
-	int nuevaCantidad = 0, codigoAreaModificar = 0, codigoAreaEliminar = 0;
+	int nuevaCantidad = 0;
+	string codigoAreaModificar = "", codigoAreaEliminar = "";
 
 	do {
 		mostrarSubmenuAreas();
 		cin >> opcionSubmenuAreas;
+		verificarCin();
 
 		switch (opcionSubmenuAreas) {
 		case 1:
@@ -193,7 +167,7 @@ void submenuAreas() {
 			break;
 		case 2:
 			// Solicitar información para modificar la cantidad de ventanillas...
-			cout << "Ingrese el indice del área que se encuentra a modificar: ";
+			cout << "Ingrese el codigo del área a modificar: ";
 			cin >> codigoAreaModificar;
 			cout << "Ingrese la nueva cantidad de ventanillas: ";
 			cin >> nuevaCantidad;
@@ -221,6 +195,7 @@ void submenuServiciosDisponibles() {
 	do {
 		mostrarSubmenuServiciosDisponibles();
 		cin >> opcionSubmenuServicios;
+		verificarCin();
 
 		switch (opcionSubmenuServicios) {
 		case 1:
@@ -249,6 +224,7 @@ void menuAdministracion() {
 	do {
 		mostrarMenuAdministracion();
 		cin >> opcionAdmin;
+		verificarCin();
 
 		switch (opcionAdmin) {
 		case 1:

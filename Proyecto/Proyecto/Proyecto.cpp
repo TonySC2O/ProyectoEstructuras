@@ -7,6 +7,7 @@
 #include <string>
 #include <cstdlib>
 #include <stdexcept>
+#include <limits>
 #include "./Apoyo/SortedArrayList.h"
 #include "./Apoyo/LinkedPriorityQueue.h"
 #include "./Apoyo/ArrayList.h"
@@ -24,7 +25,7 @@ int main() {
 		{
 			mostrarMenuPrincipal();
 			cin >> opcionPrincipal;
-
+			verificarCin();
 			switch (opcionPrincipal) {
 			case 1:
 				verColas(); // Llamar a la función para mostrar el estado de las colas
