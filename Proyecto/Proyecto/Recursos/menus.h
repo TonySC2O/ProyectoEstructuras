@@ -5,13 +5,13 @@
 using namespace std;
 
 void mostrarMenuPrincipal() {
-	cout << "----- Menu Principal -----" << endl;
-	cout << "1. Estado de las colas" << endl;
-	cout << "2. Tiquetes" << endl;
-	cout << "3. Atender" << endl;
-	cout << "4. Administracion" << endl;
-	cout << "5. Estadisticas del sistema" << endl;
-	cout << "6. Salir" << endl;
+    cout << "----- Menu Principal -----" << endl;
+    cout << "1. Estado de las colas" << endl;
+    cout << "2. Tiquetes" << endl;
+    cout << "3. Atender" << endl;
+    cout << "4. Administracion" << endl;
+    cout << "5. Estadisticas del sistema" << endl;
+    cout << "6. Salir" << endl;
 	cout << "Seleccione una opcion: ";
 }
 

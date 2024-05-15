@@ -289,7 +289,7 @@ void eliminarServicio() {
 	servicios->remove();
 	servicios->goToStart(); // Regresar al inicio de la lista
 }
-
+//____________________________Corregir____________________________
 void eliminarArea(int pos) {
 	areas->goToPos(pos);
 	Area areaTemp = areas->remove();
@@ -310,6 +310,7 @@ void eliminarArea(int pos) {
 	areaTemp.colaTiquetes->~LinkedPriorityQueue();
 	areaTemp.ventanillas->~ArrayList();
 }
+//____________________________Corregir____________________________
 
 // Este codigo recorre cada area para ver cual coincide con el codigo del area del tiquete
 void colocarTiquete(string codigoArea, string tipoUsuario, string tipoServicio, int numGlobal, int horaSolicitud, int prioridadFinal) {
@@ -362,9 +363,8 @@ void eliminarTicketsCola(int opcion, int pos) {
 		}
 		areas->next();
 	}
-
-
 }
+
 void modificarCantidadVentanillas(int pos, int nuevaCantidad) {
 	areas->goToPos(pos);
 	Area area = areas->getElement(); // Obtener el elemento directamente, no como referencia
@@ -419,11 +419,11 @@ void atenderTiquete() {
 	for (i = 0; i < areas->getSize(); i++) {
 		if (areas->getElement().codigo == codigo) {
 			area = areas->getElement();
+			break;
 		}
 		areas->next();
 
 	}
-
 	if (i < areas->getSize()) {
 		cout << "El area tiene " << area.ventanillas->getSize() << "ventanillas, ingrese la ventanilla a atender. " << endl;
 		cout << "El indice inicia en 1" << endl;
@@ -440,22 +440,69 @@ void atenderTiquete() {
 			ventana.cantidadPersonas++;
 			cout << "Se asigno el tiquete al area pedido en la ventanilla ingresado. " << endl;
 		}
-
 	}
 	else {
 		cout << "El codigo ingresado del area no es valido. " << endl;
 	}
-	
 }
 void obtenerEstadisticas() {
+	// 1. Cantidad de tiquetes dispensados por área.
+	cout << "1. Cantidad de tiquetes dispensados por área:" << endl;
+	areas->goToStart();
+	for (int i = 0; i < areas->getSize(); i++) {
+		cout << "Area " << areas->getElement().codigo << ": " << areas->getElement().colaTiquetes->getSize() << " tiquetes dispensados" << endl;
+		areas->next();
+	}
+
+	// 2. Cantidad de tiquetes atendidos por ventanilla.
+	cout << "\n2. Cantidad de tiquetes atendidos por ventanilla:" << endl;
 	areas->goToStart();
 	for (int i = 0; i < areas->getSize(); i++) {
 		cout << "Area " << areas->getElement().codigo << ":" << endl;
 		areas->getElement().ventanillas->goToStart();
 		for (int j = 0; j < areas->getElement().ventanillas->getSize(); j++) {
-			cout << "Ventanilla " << areas->getElement().ventanillas->getElement().nombre << ": " << areas->getElement().ventanillas->getElement().cantidadPersonas << " personas atendidas." << endl;
+			cout << "Ventanilla " << areas->getElement().ventanillas->getElement().nombre << ": " << areas->getElement().ventanillas->getElement().cantidadPersonas << " tiquetes atendidos." << endl;
 			areas->getElement().ventanillas->next();
 		}
 		areas->next();
+	}
+
+	// 3. Cantidad de tiquetes solicitados por servicio.
+	cout << "\n3. Cantidad de tiquetes solicitados por servicio:" << endl;
+	servicios->goToStart();
+	for (int i = 0; i < servicios->getSize(); i++) {
+		int count = 0;
+		areas->goToStart();
+		for (int j = 0; j < areas->getSize(); j++) {
+			LinkedPriorityQueue<Tiquete>* colaTiquetes = areas->getElement().colaTiquetes;
+			colaTiquetes->print();
+			for (int k = 0; k < colaTiquetes->getSize(); k++) {
+				if (colaTiquetes->min().tipoServicioAsociado == servicios->getElement().nombre) {
+					count++;
+				}
+			}
+			areas->next();
+		}
+		cout << "Servicio " << servicios->getElement().nombre << ": " << count << " tiquetes solicitados." << endl;
+		servicios->next();
+	}
+
+	// 4. Cantidad de tiquetes emitidos por cada tipo de usuario.
+	cout << "\n4. Cantidad de tiquetes emitidos por cada tipo de usuario:" << endl;
+	tiposUsuario->goToStart();
+	for (int i = 0; i < tiposUsuario->getSize(); i++) {
+		int count = 0;
+		areas->goToStart();
+		for (int j = 0; j < areas->getSize(); j++) {
+			LinkedPriorityQueue<Tiquete>* colaTiquetes = areas->getElement().colaTiquetes;
+			for (int k = 0; k < colaTiquetes->getSize(); k++) {
+				if (colaTiquetes->min().tipoUsuarioAsociado == tiposUsuario->getElement().nombre) {
+					count++;
+				}
+			}
+			areas->next();
+		}
+		cout << "Tipo de Usuario " << tiposUsuario->getElement().nombre << ": " << count << " tiquetes emitidos." << endl;
+		tiposUsuario->next();
 	}
 }

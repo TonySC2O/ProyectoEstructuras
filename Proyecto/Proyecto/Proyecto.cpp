@@ -53,6 +53,6 @@ int main() {
 		{
 			cout << "Error: " << e.what() << endl;
 		}
-	} while (opcionPrincipal != 6);
+	} while (opcionPrincipal != 6 );
 }
 
