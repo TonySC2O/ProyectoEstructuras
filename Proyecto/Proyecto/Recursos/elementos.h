@@ -22,7 +22,7 @@ struct TipoUsuario {
 		}
 	}
 	~TipoUsuario() {}
-
+	
 	// Dicta que se muestra al realizar un console out del objeto.
 	friend std::ostream& operator<<(std::ostream& os, const TipoUsuario& tipo) {
 		os << tipo.nombre << ", " << tipo.descripcion << ", Prioridad: " << tipo.prioridad << endl;
@@ -123,7 +123,7 @@ struct Area {
 	string descripcion;
 	string codigo;
 	ArrayList<Ventanilla>* ventanillas;
-	LinkedPriorityQueue<Tiquete>* colaTiquetes;
+	HeapPriorityQueue<Tiquete>* colaTiquetes;
 
 	Area() : descripcion(""), codigo(""), ventanillas(new ArrayList<Ventanilla>()), colaTiquetes(new LinkedPriorityQueue<Tiquete>(DEFAULT_MAX_PRIORITY * 10 + DEFAULT_MAX_PRIORITY)) {}
 	Area(string desc, string codi, int vent) : descripcion(desc), codigo(codi), ventanillas(new ArrayList<Ventanilla>(vent)), colaTiquetes(new LinkedPriorityQueue<Tiquete>(DEFAULT_MAX_PRIORITY * 10 + DEFAULT_MAX_PRIORITY)) {
@@ -307,7 +307,7 @@ void eliminarArea(int pos) {
 		servicios->next();
 	}
 
-	areaTemp.colaTiquetes->~LinkedPriorityQueue();
+	areaTemp.colaTiquetes->~HeapPriorityQueue();
 	areaTemp.ventanillas->~ArrayList();
 }
 

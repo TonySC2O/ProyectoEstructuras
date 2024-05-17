@@ -1,2 +1,86 @@
 ﻿  Proyecto.cpp
-  Proyecto.vcxproj -> C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\x64\Debug\Proyecto.exe
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(126,19): error C2143: syntax error: missing ';' before '<'
+  (compiling source file 'Proyecto.cpp')
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(126,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'Proyecto.cpp')
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(126,42): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'Proyecto.cpp')
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(128,82): error C2614: 'Area': illegal member initialization: 'colaTiquetes' is not a base or member
+  (compiling source file 'Proyecto.cpp')
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(129,124): error C2614: 'Area': illegal member initialization: 'colaTiquetes' is not a base or member
+  (compiling source file 'Proyecto.cpp')
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(165,23): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(268,38): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(270,45): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(272,25): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(310,11): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(320,24): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(345,38): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(350,46): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(352,26): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(355,26): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(359,25): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(388,23): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(437,27): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  
+C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(438,9): error C2039: 'colaTiquetes': is not a member of 'Area'
+  (compiling source file 'Proyecto.cpp')
+  C:\Users\StevenM2Wind\Documents\GitHub\ProyectoEstructuras\Proyecto\Proyecto\Recursos\elementos.h(121,8):
+  see declaration of 'Area'
+  

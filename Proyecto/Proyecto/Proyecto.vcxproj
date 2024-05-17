@@ -140,6 +140,10 @@
     <ClInclude Include="Apoyo\PriorityQueue.h" />
     <ClInclude Include="Apoyo\Queue.h" />
     <ClInclude Include="Apoyo\SortedArrayList.h" />
+    <ClInclude Include="HeapPriorityQueue.h" />
+    <ClInclude Include="KVPair.h" />
+    <ClInclude Include="MinHeap.h" />
+    <ClInclude Include="PriorityQueu.h" />
     <ClInclude Include="tiposUsuarios.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
